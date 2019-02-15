@@ -13,8 +13,8 @@
     <script>
 
     async function test_model() {
-        const MODEL_URL = 'https://github.com/leemengtaiwan/tfjs-debug/blob/master/web_model/tensorflowjs_model.pb';
-        const WEIGHTS_URL = 'https://github.com/leemengtaiwan/tfjs-debug/blob/master/web_model/weights_manifest.json';
+        const MODEL_URL = 'http://localhost:8000/web_model/tensorflowjs_model.pb';
+        const WEIGHTS_URL = 'http://localhost:8000/web_model/weights_manifest.json';
 
         const model = await tf.loadFrozenModel(MODEL_URL, WEIGHTS_URL);
         console.log(model)
@@ -24,8 +24,7 @@
         k = k.toFloat();
         k.print();
         model.predict(k).dispose();
-
-
+        
     }
     test_model()
 
