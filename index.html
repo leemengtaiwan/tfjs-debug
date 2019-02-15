@@ -1,0 +1,34 @@
+<html>
+<head>
+    <!--<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0-alpha2/dist/tf.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.15.1/dist/tf.min.js"></script>-->
+
+
+</head>
+<body>
+    <div id="output_field"></div>
+
+</body>
+    <script>
+
+    async function test_model() {
+        const MODEL_URL = 'https://github.com/leemengtaiwan/tfjs-debug/blob/master/web_model/tensorflowjs_model.pb';
+        const WEIGHTS_URL = 'https://github.com/leemengtaiwan/tfjs-debug/blob/master/web_model/weights_manifest.json';
+
+        const model = await tf.loadFrozenModel(MODEL_URL, WEIGHTS_URL);
+        console.log(model)
+        // const cat = document.getElementById('cat');
+        // model.execute({input: tf.browser.fromPixels(cat)});
+        k = tf.zeros([1, 3, 300, 450]);
+        k = k.toFloat();
+        k.print();
+        model.predict(k).dispose();
+
+
+    }
+    test_model()
+
+    </script>
+
+</html>
